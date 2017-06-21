@@ -7,7 +7,7 @@ export default class Header extends React.Component {
 			return (
 
 				<header className="site-branding">
-					<img src="./logo.png" />
+					<img src="./img/logo.png" />
 				</header>
 
 				)
