@@ -7,6 +7,7 @@ export default class Nav extends React.Component {
 					<a href="#"> <li className="nav-items"> About </li> </a>
 					<a href="#"> <li className="nav-items"> Recipies </li> </a>
 					<a href="#"> <li className="nav-items"> Food Photography </li> </a>
+					<a href="#"> <li className="nav-items"> Culinary Contraptions </li> </a>
 				</ul>
 			</nav>
 			)}}
