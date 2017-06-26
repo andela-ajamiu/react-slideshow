@@ -43,6 +43,22 @@ nav>ul {
 	margin-right: 5%; 
 }
 
+.slideshow-container {
+	width: 56%;
+	margin-left: 22%;
+	margin-right: 22%;
+}
+
+.slide-img {
+	width: 100%;
+}
+
+.slideshow-dot {
+	text-align: center;
+}
+
+
+
 footer.footer-primary {
 	background-color: #8fb259;
 	width: 80%;

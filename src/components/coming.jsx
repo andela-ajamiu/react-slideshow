@@ -12,7 +12,7 @@ export default class Coming extends React.Component{
 				<p className="lead-text"> You'll get 2 exclusive recipies before the public </p>
 				<input>
 				</input>
-				<Slideshow />
+
 			</section>
 			)
 	}
