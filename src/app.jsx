@@ -1,20 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import './style/main.css';
+import './style/slideshow.css';
 import Header from './components/header.jsx';
 import Nav from './components/nav.jsx';
 import Coming from './components/coming.jsx';
 import Slideshow from './components/slideshow.jsx';
 import Footer from './components/footer.jsx';
 
-
-
 export default class Content extends React.Component {
 	constructor() {
 		super();
 	}
+
 	render() {
-		return(
+		return (
 			<div>
 				<Header />
 				<Nav />
@@ -22,11 +22,9 @@ export default class Content extends React.Component {
 				<Slideshow />
 				<Footer />
 			</div>
-			)
+		)
 	}
-	}
+}
 
 const contentNode = document.getElementById('contents');
-
-ReactDOM.render(<Content /> , contentNode);
-
+ReactDOM.render(<Content />, contentNode);

@@ -1,7 +1,8 @@
 import React from 'react';
 
 export default class Nav extends React.Component {
-		render () {		return (
+	render() {
+		return (
 			<nav className="nav-primary">
 				<ul>
 					<a href="#"> <li className="nav-items"> About </li> </a>
@@ -10,4 +11,6 @@ export default class Nav extends React.Component {
 					<a href="#"> <li className="nav-items"> Culinary Contraptions </li> </a>
 				</ul>
 			</nav>
-			)}}
+		)
+	}
+}

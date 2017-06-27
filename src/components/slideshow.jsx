@@ -1,91 +1,108 @@
 import React from 'react';
-import RightArrow from './rightarrow.jsx'
-import LeftArrow from './leftarrow.jsx'
+import RightArrow from './rightarrow.jsx';
+import LeftArrow from './leftarrow.jsx';
+import Image1 from '../img/DSC_0312.jpg';
+import Image2 from '../img/IMG_0239.JPG';
+import Image3 from '../img/IMG_0828.JPG';
 
 export default class Slideshow extends React.Component {
 	constructor() {
 		super();
-		// this.state = {slideCount: 0}
-		this.nextSlide = this.nextSlide.bind(this);
-		this.previousSlide = this.previousSlide.bind(this);
+		this.state = {
+			slideIndex: 1
+		}
+
+		this.slideIndex = 1;
+		this.prevSlides = this.prevSlides.bind(this);
+		this.nextSlides = this.nextSlides.bind(this);
 		this.showSlides = this.showSlides.bind(this);
-}
+		this.showSlide1 = this.showSlide1.bind(this);
+		this.showSlide2 = this.showSlide2.bind(this);
+		this.showSlide3 = this.showSlide3.bind(this);
+	}
 
- 
+	componentDidMount() {
+		this.showSlides(this.slideIndex);
+	}
 
- nextSlide() {
-      this.setState({ slideCount: this.state.slideCount + 1 })
-  }
+	prevSlides() {
+		this.showSlides(this.slideIndex -= 1);
+	}
 
-  previousSlide() {
-      this.setState({ slideCount: this.state.slideCount - 1 })
-  }
-  
+	nextSlides() {
+		this.showSlides(this.slideIndex += 1);
+	}
 
-showSlides(n) {
-	let slideCount = 0;
-  const slides = document.getElementsByClassName("mySlides");
-  const dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {
-	this.setState({ slideCount: 0 })
-  }
-  if (n < slides.length) {
-  	this.setState({ slideCount: 0 })
-    slideCount = slides.length - 1
-  }
-  for (var i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (var i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideCount].style.display = "block";
-  dots[slideCount].className = "active";
-}
+	showSlide1() {
+		this.showSlides(this.slideIndex = 1);
+	}
 
+	showSlide2() {
+		this.showSlides(this.slideIndex = 2);
+	}
 
+	showSlide3() {
+		this.showSlides(this.slideIndex = 3);
+	}
 
-		render() {
-			
+	showSlides(n) {
+		console.log('the n', n);
+		var i;
+		var slides = document.getElementsByClassName("mySlides");
+		var dots = document.getElementsByClassName("dot");
+		if (n > slides.length) { this.slideIndex = 1 }
+		if (n < 1) { this.slideIndex = slides.length }
+		for (i = 0; i < slides.length; i++) {
+			slides[i].style.display = "none";
+		}
+		for (i = 0; i < dots.length; i++) {
+			dots[i].className = dots[i].className.replace(" active", "");
+		}
+		slides[this.slideIndex - 1].style.display = "block";
+		dots[this.slideIndex - 1].className += " active";
+	}
+
+	renderSlides() {
 		return (
-		
-<div>
-	<div className="slideshow-container">
-		  <div className="mySlides fade">
-		    <div className="numbertext">1 / 3</div>
-		    <img src="./img/DSC_0312.jpg" className="slide-img" />
-		    <div className="text">Caption Text</div>
-		  </div>
+			<div>
+				<div className="slideshow-container">
+					<div className="mySlides fade">
+						<div className="numbertext">1 / 3</div>
+						<img src={Image1} style={{ width: 716, height: 250 }} />
+						<div className="text">Caption Text</div>
+					</div>
 
-		  <div className="mySlides fade">
-		    <div className="numbertext">2 / 3</div>
-		    <img src="./img/IMG_0239.JPG" className="slide-img" />
-		    <div className="text">Caption Two</div>
-		  </div>
+					<div className="mySlides fade">
+						<div className="numbertext">2 / 3</div>
+						<img src={Image2} style={{ width: 716, height: 250 }} />
+						<div className="text">Caption Two</div>
+					</div>
 
-		  <div className="mySlides fade">
-		    <div className="numbertext">3 / 3</div>
-		    <img src="./img/IMG_0828.JPG" className="slide-img" />
-		    <div className="text">Caption Three</div>
-		  </div>
+					<div className="mySlides fade">
+						<div className="numbertext">3 / 3</div>
+						<img src={Image3} style={{ width: 716, height: 250 }} />
+						<div className="text">Caption Three</div>
+					</div>
 
-		  <LeftArrow />
-		  <RightArrow />
-	</div>
-	<br />
+					<a className="prev" onClick={this.prevSlides} >&#10094;</a>
+					<a className="next" onClick={this.nextSlides} >&#10095;</a>
 
-	<div className="slideshow-dot">
+				</div>
+				<br />
 
-	  <span className="dot" onClick='currentSlide(1)'></span> 
-	  <span className="dot" onClick='currentSlide(2)'></span> 
-	  <span className="dot" onClick='currentSlide(3)'></span>
+				<div style={{ textAlign: "center" }}>
+					<span className="dot" onClick={this.showSlide1} ></span>
+					<span className="dot" onClick={this.showSlide2} ></span>
+					<span className="dot" onClick={this.showSlide3} ></span>
+				</div>
+			</div>)
+	}
 
-	</div>
-	
-</div>
-
-			);
-		
-
+	render() {
+		return (
+			<div>
+				{this.renderSlides()}
+			</div>
+		)
 	}
 }
